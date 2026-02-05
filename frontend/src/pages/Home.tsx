@@ -13,7 +13,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="absolute top-10 md:top-20 text-white text-4xl md:text-8xl z-10 font-permanent-marker text-center w-full tracking-widest"
+                className="absolute top-22 md:top-24 text-white text-2xl md:text-6xl z-10 font-permanent-marker text-center w-full tracking-widest"
             >
                 WHO AM I?
             </motion.h1>
@@ -25,14 +25,14 @@ const Home = () => {
                     <AnimatedLine x1="16%" y1="28%" x2="54%" y2="62%" delay={1.5} />
                     <AnimatedLine x1="82%" y1="23%" x2="54%" y2="62%" delay={1.7} />
                     <AnimatedLine x1="23%" y1="72%" x2="54%" y2="62%" delay={1.9} />
-                    <AnimatedLine x1="75%" y1="79%" x2="54%" y2="62%" delay={2.1} />
+                    <AnimatedLine x1="75%" y1="76%" x2="54%" y2="62%" delay={2.1} />
                 </g>
                 {/* Mobile Lines */}
                 <g className="block md:hidden">
                     <AnimatedLine x1="18%" y1="26%" x2="56%" y2="57%" delay={1.5} />
                     <AnimatedLine x1="80%" y1="22%" x2="56%" y2="57%" delay={1.7} />
                     <AnimatedLine x1="18%" y1="75%" x2="56%" y2="57%" delay={1.9} />
-                    <AnimatedLine x1="82%" y1="78%" x2="56%" y2="57%" delay={2.1} />
+                    <AnimatedLine x1="82%" y1="76%" x2="56%" y2="57%" delay={2.1} />
                 </g>
             </svg>
 
@@ -48,11 +48,11 @@ const Home = () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] rounded-full z-[-2]" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 80%)', filter: 'blur(240px)' }}></div>
 
                 {/* Polaroid Foto */}
-                <div className="bg-white p-2 md:p-3 pb-3 rounded-2xl relative shadow-2xl">
-                    <div className="w-40 h-52 md:w-56 md:h-72 bg-[#f3d3a3] overflow-hidden border-2 md:border-4 border-white rounded-xl">
+                <div className="bg-white p-2 md:p-2 pb-3 rounded-2xl relative shadow-2xl">
+                    <div className="w-40 h-52 md:w-50 md:h-66 bg-[#f3d3a3] overflow-hidden border-2 md:border-4 border-white rounded-xl">
                         <img src={fotoDiri} alt="Yogi" className="w-full h-full object-cover" />
                     </div>
-                    <p className="text-black text-center mt-4 md:mt-6 text-l md:text-2xl font-junge uppercase">
+                    <p className="text-black text-center mt-2 md:mt-4 text-l md:text-xl font-junge uppercase">
                         YOGI TRI WIDODO
                     </p>
                     <motion.div
@@ -63,7 +63,7 @@ const Home = () => {
                             delay: 1.5,
                             ease: "backOut"
                         }}
-                        className="absolute top-[52%] right-[20%] -translate-x-1/2 -translate-y-1/2 w-6 h-6 pin-red-solid rounded-full z-30"
+                        className="absolute top-[52%] right-[16%] -translate-x-1/2 -translate-y-1/2 w-6 h-6 pin-red-solid rounded-full z-30"
                     ></motion.div>
                 </div>
             </motion.div>
@@ -95,7 +95,7 @@ const StickyNote = ({ text, pos, rot, delay }: any) => (
     >
         <div className="bg-white p-2 md:p-4 pt-8 md:pt-10 pb-3 md:pb-4 w-24 md:w-36 flex flex-col items-center relative shadow-lg">
             <div className="absolute top-1 md:top-2 left-1/2 -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 pin-red-solid rounded-full"></div>
-            <span className="text-black font-kode-mono text-[12px] md:text-sm font-bold uppercase text-center leading-tight break-words">
+            <span className="text-black font-kode-mono text-[12px] md:text-sm font-bold uppercase text-center leading-tight break-words max-w-[80%] block">
                 {text}
             </span>
         </div>
