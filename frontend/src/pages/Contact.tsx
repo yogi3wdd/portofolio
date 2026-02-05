@@ -37,20 +37,20 @@ const Contact = () => {
       <div className="w-full relative">
 
         {/* LABEL TAB FOLDER */}
-        <div className="bg-[#FEC98C] w-60 h-10 rounded-t-2xl ml-6 flex items-center justify-center">
-          <span className="text-black font-bold font-poppins text-sm tracking-widest">CONTACT</span>
+        <div className="bg-[#FEC98C] w-24 h-6 md:w-60 md:h-10 rounded-t-xl md:rounded-t-2xl ml-6 flex items-center justify-center">
+          <span className="text-black font-bold font-poppins text-xs md:text-sm tracking-widest">CONTACT</span>
         </div>
 
         {/* BODY FOLDER */}
-        <div className="bg-[#FEC98C] rounded-t-2xl p-8 pb-0 shadow-2xl relative z-10">
+        <div className="bg-[#FEC98C] rounded-t-2xl p-4 md:p-8 pb-0 shadow-2xl relative z-10">
           <div className="bg-white rounded-t-xl p-8 md:p-12 flex flex-col md:flex-row gap-12">
 
             {/* SISI KIRI: TEXT & SOCIALS */}
             <div className="flex-1">
-              <h2 className="text-[#2A2A2A] text-5xl font-black mb-6 leading-tight font-kode-mono">
+              <h2 className="text-[#2A2A2A] text-2xl md:text-5xl font-black mb-6 leading-tight font-kode-mono">
                 GET IN <br /> TOUCH
               </h2>
-              <p className="text-[#2A2A2A] text-sm leading-relaxed mb-16 max-w-[280px] font-kode-mono">
+              <p className="text-[#2A2A2A] text-xs md:text-sm leading-relaxed mb-16 max-w-[280px] font-kode-mono">
                 Have questions or want to collaborate? Send us your message via the email form or by clicking on one of the apps below.
               </p>
 
