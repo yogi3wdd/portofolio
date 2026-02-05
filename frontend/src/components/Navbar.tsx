@@ -60,12 +60,17 @@ const Navbar = () => {
             </div>
 
             {/* CONTACT */}
-            <div className="border border-white/100 rounded-full p-[3px]">
-                <button className="bg-[#D9D9D9] hover:bg-white text-[#2A2A2A] px-8 py-2 rounded-full text-sm transition-all">
-                    Contact
-                </button>
+            <div className="border border-white/40 rounded-full p-[2px]">
+                <div className="border border-white/40 rounded-full">
+                    <a
+                        href="#contact"
+                        onClick={() => setActiveTab('')}
+                        className="bg-[#D9D9D9] hover:bg-white text-[#2A2A2A] px-6 py-2 rounded-full text-sm font-bold transition-all block text-center font-poppins"
+                    >
+                        Contact Me
+                    </a>
+                </div>
             </div>
-
         </nav>
     );
 };
