@@ -50,6 +50,14 @@ body {
   height: 100vh;
 }
 
+section {
+  scroll-margin-top: 100px; 
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
