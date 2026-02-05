@@ -1,10 +1,20 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
     const pathLogo = "/my_logo.png";
     const [activeTab, setActiveTab] = useState('Home');
     const menuItems = ['Home', 'About', 'Skill', 'Project', 'Certificate'];
+
+    useEffect(() => {
+        const handleScrollUpdate = (e: any) => {
+            const sectionId = e.detail;
+            setActiveTab(sectionId.charAt(0).toUpperCase() + sectionId.slice(1));
+        };
+
+        window.addEventListener('sectionChange', handleScrollUpdate);
+        return () => window.removeEventListener('sectionChange', handleScrollUpdate);
+    }, []);
 
     return (
         <nav className="fixed top-4 left-0 w-full flex items-center justify-between px-10 z-[100]">
