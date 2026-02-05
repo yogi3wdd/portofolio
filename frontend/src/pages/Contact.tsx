@@ -42,7 +42,7 @@ const Contact = () => {
         </div>
 
         {/* BODY FOLDER */}
-        <div className="bg-[#FEC98C] rounded-t-2xl p-4 md:p-8 pb-0 shadow-2xl relative z-10">
+        <div className="bg-[#FEC98C] rounded-t-2xl p-4 md:p-8 pb-0 md:pb-0 shadow-2xl relative z-10">
           <div className="bg-white rounded-t-xl p-8 md:p-12 flex flex-col md:flex-row gap-12">
 
             {/* SISI KIRI: TEXT & SOCIALS */}
