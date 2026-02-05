@@ -33,7 +33,7 @@ const Merge = () => {
     };
 
     return (
-        <div className="flex flex-col w-full bg-[#1a1a1a]">
+        <div className="flex flex-col w-full bg-[#2A2A2A]">
             <SectionWrapper id="home" setActiveSection={handleSetActive}><Home /></SectionWrapper>
             <SectionWrapper id="about" setActiveSection={handleSetActive}><About /></SectionWrapper>
             <SectionWrapper id="skill" setActiveSection={handleSetActive}><Skill /></SectionWrapper>
