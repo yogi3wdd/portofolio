@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
-import { getProjects } from '../features/projects/api';
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa6';
+import { getProjects } from '../services/projects';
 import type { Project } from '../types/project';
 import ProjectCard from '../components/ProjectCard';
+import ProjectDetailsModal from '../components/ProjectDetailsModal';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Projects = () => {
+    const { t } = useLanguage();
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null); // Tambah state error agar user tahu jika gagal
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     useEffect(() => {
         getProjects()
@@ -16,32 +22,55 @@ const Projects = () => {
             })
             .catch((err) => {
                 console.error(err);
-                setError("Gagal memuat data dari Supabase");
+                setError('projects.error');
                 setLoading(false);
             });
     }, []);
 
-    if (loading) return (
-        <div className="flex justify-center p-10">
-            <p className="animate-pulse">Loading projects from Supabase...</p>
-        </div>
-    );
-
-    if (error) return <p className="text-red-500 text-center">{error}</p>;
-
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-6">My Projects</h1>
-            {projects.length === 0 ? (
-                <p>Belum ada project yang ditambahkan.</p>
-            ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
-                    ))}
-                </div>
-            )}
-        </div>
+                <>
+                <section className="projects-page">
+                    <div className="projects-monitor">
+                        <div className="projects-screen">
+                            <div className="projects-toolbar" role="group" aria-label="Desktop status">
+                                <span className="projects-window-dots" aria-hidden="true"><i /><i /><i /></span>
+                                <span className="projects-toolbar-label">{t('projects.directory')}</span>
+                                <span className="projects-toolbar-status"><i /> ONLINE</span>
+                            </div>
+
+                            <header className="projects-heading">
+                                <p className="projects-eyebrow">{t('projects.kicker')}</p>
+                                <h1>{t('projects.title')}</h1>
+                                <p className="projects-intro">{t('projects.description')}</p>
+                            </header>
+
+                            {loading ? (
+                                <p className="projects-message" role="status">{t('projects.loading')}</p>
+                            ) : error ? (
+                                <p className="projects-message projects-message-error" role="alert">{t(error)}</p>
+                            ) : projects.length === 0 ? (
+                                <p className="projects-message">{t('projects.empty')}</p>
+                            ) : (
+                                <div className="projects-grid">
+                                    {projects.map((project) => (
+                                        <ProjectCard key={project.id} project={project} onSelect={setSelectedProject} />
+                                    ))}
+                                    <Link className="projects-more-link" to="/projects/all">
+                                        <span className="projects-more-icon" aria-hidden="true">
+                                            <FaArrowRight />
+                                        </span>
+                                        <span className="projects-more-kicker">{t('projects.index')}</span>
+                                        <span>{t('projects.follow')}</span>
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </section>
+                            {selectedProject && (
+                                <ProjectDetailsModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+                            )}
+                    </>
     );
 };
 

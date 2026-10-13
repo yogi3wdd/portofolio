@@ -1,37 +1,54 @@
 import { motion } from 'framer-motion';
+import fotoDiri from '../assets/picture/fotoDiri2.png';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
   return (
-    <div className="min-h-screen w-full bg-[#1a1a1a] flex flex-col items-center justify-center p-10 text-white">
-      {/* Animasi Judul */}
-      <motion.h1 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-5xl font-bold mb-6 font-sans tracking-tight"
-      >
-        ABOUT ME
-      </motion.h1>
+    <section className="about-section w-full min-h-screen text-white">
+      <div className="about-dossier">
+        <header className="about-heading">
+          <p className="font-junge">{t('about.file')}</p>
+          <h1 className="font-permanent-marker">{t('about.title')}</h1>
+        </header>
 
-      {/* Konten Sederhana */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
-        className="max-w-2xl text-center border border-white/20 p-8 rounded-3xl bg-white/5 backdrop-blur-md"
-      >
-        <p className="text-lg leading-relaxed text-gray-300">
-          Halo! Saya <span className="text-white font-bold">Yogi Tri Widodo</span>. 
-          Saya adalah seorang pengembang yang bersemangat dalam membangun solusi kreatif 
-          melalui Mobile Development, Web Development, UI/UX Design, dan IoT.
-        </p>
-        
-        <div className="mt-8 grid grid-cols-2 gap-4 text-sm font-mono text-gray-400">
-          <div className="border border-white/10 p-3 rounded-xl">📍 Karanganyar, Indonesia</div>
-          <div className="border border-white/10 p-3 rounded-xl">🎓 Student / Developer</div>
+        <div className="about-layout">
+          <motion.figure
+            className="about-polaroid"
+            initial={{ opacity: 0, y: 24, rotate: -5 }}
+            whileInView={{ opacity: 1, y: 0, rotate: -2 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.65, ease: 'easeOut' }}
+          >
+            <span className="about-photo-pin" aria-hidden="true" />
+            <img src={fotoDiri} alt="Portrait of Yogi Tri Widodo" />
+            <figcaption>
+              <strong className="font-junge">Yogi Tri Widodo</strong>
+              <span>Cilacap, Indonesia</span>
+            </figcaption>
+          </motion.figure>
+
+          <motion.div
+            className="about-story"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.65, delay: 0.12, ease: 'easeOut' }}
+          >
+            <p className="about-kicker font-junge">{t('about.profile')}</p>
+            <h2 className="font-permanent-marker">{t('about.greeting')}</h2>
+            <p className="about-intro">{t('about.intro')}</p>
+            <p className="about-detail">{t('about.detail')}</p>
+
+            <div className="about-focus" aria-label={t('about.focus')}>
+              <span>{t('category.web')}</span>
+              <span>{t('category.electrical')}</span>
+              <span>{t('category.design')}</span>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 };
 

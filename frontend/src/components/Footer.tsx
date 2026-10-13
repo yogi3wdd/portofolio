@@ -5,8 +5,10 @@ import {
     FaPinterestP,
     FaGithub
 } from 'react-icons/fa6';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Footer = () => {
+    const { t } = useLanguage();
     const currentYear = new Date().getFullYear();
 
     const socialIcons = [
@@ -47,7 +49,7 @@ const Footer = () => {
 
                 {/* COPYRIGHT & TAHUN */}
                 <p className="text-[10px] text-gray-400 tracking-widest uppercase">
-                    © {currentYear} Yogi Tri Widodo. All Rights Reserved.
+                    © {currentYear} Yogi Tri Widodo. {t('footer.rights')}
                 </p>
             </div>
         </footer>

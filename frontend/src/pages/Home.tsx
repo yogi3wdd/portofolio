@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion'; // Import motion
 import bgImage from '../assets/picture/background.png';
 import fotoDiri from '../assets/picture/fotoDiri.png';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Home = () => {
+    const { t } = useLanguage();
     return (
-        <div className="relative w-screen h-screen overflow-hidden flex items-center justify-center bg-cover bg-center"
-            style={{ backgroundImage: `url(${bgImage})` }}>
+        <div
+            className="relative w-screen h-screen overflow-hidden flex items-center justify-center bg-cover bg-center"
+            style={{ backgroundImage: `url(${bgImage})` }}
+        >
             <div className="absolute inset-0 bg-black/50 z-0"></div>
 
             {/* Judul */}
@@ -15,7 +19,7 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
                 className="absolute top-22 md:top-24 text-white text-2xl md:text-6xl z-10 font-permanent-marker text-center w-full tracking-widest"
             >
-                WHO AM I?
+                {t('home.title')}
             </motion.h1>
 
             {/* Garis Merah */}
@@ -68,22 +72,48 @@ const Home = () => {
                 </div>
             </motion.div>
 
-            <StickyNote text="Mobile Developer" pos="top-[25%] left-[5%] md:left-[10%]" rot="rotate-[10deg]" delay={1.2} />
-            <StickyNote text="Web Developer" pos="top-[20%] right-[5%] md:right-[12%]" rot="-rotate-[13deg]" delay={1.4} />
-            <StickyNote text="UI/UX Designer" pos="bottom-[15%] left-[5%] md:left-[18%]" rot="-rotate-3" delay={1.6} />
-            <StickyNote text="IoT Developer" pos="bottom-[12%] right-[5%] md:right-[20%]" rot="rotate-0" delay={1.8} />
+            <StickyNote text={t('home.role.web')} pos="top-[25%] left-[5%] md:left-[10%]" rot="rotate-[10deg]" delay={1.2} />
+            <StickyNote text={t('home.role.electrical')} pos="top-[20%] right-[5%] md:right-[12%]" rot="-rotate-[13deg]" delay={1.4} />
+            <StickyNote text={t('home.role.design')} pos="bottom-[15%] left-[5%] md:left-[18%]" rot="-rotate-3" delay={1.6} />
+            <StickyNote text={t('home.role.iot')} pos="bottom-[12%] right-[5%] md:right-[20%]" rot="rotate-0" delay={1.8} />
         </div>
     );
 };
 
-const AnimatedLine = ({ x1, y1, x2, y2, delay }: any) => (
-    <motion.line
-        x1={x1} y1={y1} x2={x2} y2={y2}
-        stroke="red" strokeWidth="3" strokeOpacity="0.8"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1, delay: delay, ease: "easeInOut" }}
-    />
+type AnimatedLineProps = {
+    x1: string;
+    y1: string;
+    x2: string;
+    y2: string;
+    delay: number;
+};
+
+const AnimatedLine = ({ x1, y1, x2, y2, delay }: AnimatedLineProps) => (
+    <g>
+        <motion.line
+            x1={x1} y1={y1} x2={x2} y2={y2}
+            stroke="#e53935" strokeWidth="3" strokeOpacity="0.8"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 1, delay, ease: "easeInOut" }}
+        />
+        <motion.circle
+            cx={x1} cy={y1} r="5"
+            fill="#e53935" stroke="white" strokeWidth="2"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.25, delay: delay + 1 }}
+            style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+        />
+        <motion.circle
+            cx={x2} cy={y2} r="6"
+            fill="#e53935" stroke="white" strokeWidth="2"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.25, delay: delay + 1 }}
+            style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+        />
+    </g>
 );
 
 const StickyNote = ({ text, pos, rot, delay }: any) => (
